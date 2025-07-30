@@ -4,13 +4,10 @@ import os
 import sys
 
 sys.path.append("/Workspace/Users/dauuuk@gmail.com/hw/ingestion")
+from utils import get_source_config, get_sink_config
 
-from utils import return_source_config, return_sink_config
-
-
-SOURCE_ACCESS_KEY, SOURCE_SECRET_ACCESS_KEY, SOURCE_REGION = return_source_config()
-SINK_ACCESS_KEY, SINK_SECRET_ACCESS_KEY, SINK_REGION = return_sink_config()
-
+SOURCE_ACCESS_KEY, SOURCE_SECRET_ACCESS_KEY, SOURCE_REGION = get_source_config()
+SINK_ACCESS_KEY, SINK_SECRET_ACCESS_KEY, SINK_REGION = get_sink_config()
 
 def ingest_data(
     source_bucket_name: str, source_prefix: str, sink_bucket_name: str, sink_prefix: str

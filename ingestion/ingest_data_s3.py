@@ -1,1 +1,0 @@
-%fs ls 's3://romasdapublic/hw-task/inputs/ads_and_trackers/'

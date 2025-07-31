@@ -2,7 +2,7 @@ import boto3
 from datetime import datetime
 import os
 import sys
-sys.path.append("/Workspace/Users/dauuuk@gmail.com/hw/ingestion")
+sys.path.append("/Workspace/Users/dauuuk@gmail.com/hw/utility")
 from utils import get_source_config, get_sink_config
 
 SOURCE_ACCESS_KEY, SOURCE_SECRET_ACCESS_KEY, SOURCE_REGION = get_source_config()
@@ -25,7 +25,7 @@ def ingest_data(
     )
 
     # Creating file path based on current date
-    date_str = datetime.now().strftime("%Y/%m/%d")
+    date_str = datetime.now().strftime("%Y-%m-%d")
     timestamp_str = datetime.now().strftime("%Y%m%d_%H%M%S")
     sink_path = f"{sink_prefix}/{date_str}"
 

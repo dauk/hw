@@ -9,3 +9,8 @@ def get_sink_config():
     sink_secret_access_key = ''
     sink_region = ''
     return sink_access_key, sink_secret_access_key, sink_region
+
+def get_access_secret_keys():
+    access_key = ''
+    secret_key = ''
+    return access_key, secret_key

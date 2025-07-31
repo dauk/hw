@@ -1,0 +1,23 @@
+ads_and_trackers:
+  vendorA:
+    source_bucket_name: romasdapublic
+    source_prefix: hw-task/inputs/ads_and_trackers/vendorA
+    sink_bucket_name: hwbronze
+    sink_prefix: ads_and_trackers/vendorA
+  vendorB:
+    source_bucket_name: romasdapublic
+    source_prefix: hw-task/inputs/ads_and_trackers/vendorB
+    sink_bucket_name: hwbronze
+    sink_prefix: ads_and_trackers/vendorB
+  vendorC:
+    source_bucket_name: romasdapublic
+    source_prefix: hw-task/inputs/ads_and_trackers/vendorC
+    sink_bucket_name: hwbronze
+    sink_prefix: ads_and_trackers/vendorC
+
+malware:
+  vendorA:
+    source_bucket_name: romasdapublic
+    source_prefix: hw-task/inputs/malware/vendorA
+    sink_bucket_name: hwbronze
+    sink_prefix: malware/vendorA

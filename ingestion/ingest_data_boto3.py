@@ -2,7 +2,6 @@ import boto3
 from datetime import datetime
 import os
 import sys
-
 sys.path.append("/Workspace/Users/dauuuk@gmail.com/hw/ingestion")
 from utils import get_source_config, get_sink_config
 
@@ -34,6 +33,9 @@ def ingest_data(
 
     for obj in bucket.objects.filter(Prefix=source_prefix):
         source_key = obj.key
+        # Skip directories and empty files
+        if source_key.endswith('/') or obj.size == 0:
+            continue
 
         # Extract original filename and extension
         filename = os.path.basename(source_key)
@@ -51,13 +53,5 @@ def ingest_data(
 
         print(f"Copied {source_key} to {destination_key}")
 
-
-if __name__ == "__main__":
-    ingest_data(
-        source_bucket_name="romasdapublic",
-        source_prefix="hw-task/inputs/malware",
-        sink_bucket_name="hwbronze",
-        sink_prefix="malware",
-    )
 
 # TODO move copied files to processed

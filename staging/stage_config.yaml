@@ -1,0 +1,41 @@
+ads_and_trackers:
+  vendorA:
+    source_bucket_name: hwbronze
+    source_prefix: ads_and_trackers/vendorA
+    sink_bucket_name: hwsilver
+    sink_prefix: ads_and_trackers/vendorA
+    data_type: text
+    days_to_load: 2
+    starts_with: '||'
+    regex_clear: regexp_replace(regexp_replace(col("value"), r"^\|\|", ""), r"\^$", "")
+  vendorB:
+    source_bucket_name: hwbronze
+    source_prefix: ads_and_trackers/vendorB
+    sink_bucket_name: hwsilver
+    sink_prefix: ads_and_trackers/vendorB
+    data_type: text
+    days_to_load: 2
+    starts_with: 0.0.0.0
+    regex_clear: regexp_replace(col("value"), r"^0\.0\.0\.0\s+", "")
+  vendorC:
+    source_bucket_name: hwbronze
+    source_prefix: ads_and_trackers/vendorC
+    sink_bucket_name: hwsilver
+    sink_prefix: ads_and_trackers/vendorC
+    data_type: text
+    days_to_load: 2
+    starts_with: 127.0.0.1
+    regex_clear: regexp_replace(col("value"), r"^127\.0\.0\.1\s+", "")
+malware:
+  vendorA:
+    source_bucket_name: hwbronze
+    source_prefix: malware/vendorA
+    sink_bucket_name: hwsilver
+    sink_prefix: malware/vendorA
+    data_type: text
+    days_to_load: 2
+    starts_with: '||'
+    regex_clear: regexp_replace(regexp_replace(col("value"), r"^\|\|", ""), r"\^$", "")
+
+
+

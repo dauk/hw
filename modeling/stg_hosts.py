@@ -34,3 +34,10 @@ df_all.createOrReplaceTempView('tmp_hosts')
 
 spark.sql("select vendor, count(*) from tmp_hosts group by vendor").show()
 
+df_all.write.format("delta").mode("overwrite").saveAsTable("dwh.stg_hosts")
+
+
+
+
+
+

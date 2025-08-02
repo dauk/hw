@@ -1,0 +1,1 @@
+spark.sql("CREATE SCHEMA IF NOT EXISTS dev.dwh")

@@ -1,4 +1,4 @@
-def load_dim_category():
+def load_dim_category(spark):
     print("====STARTING LOAD DIMENSION TABLE dim_category====")
     spark.sql("""
         INSERT INTO dwh.dim_category (category)

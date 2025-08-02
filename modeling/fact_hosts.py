@@ -1,4 +1,4 @@
-def load_fact_hosts():
+def load_fact_hosts(spark):
     print("====STARTING LOAD FACT TABLE fact_hosts====")
     spark.sql("""
         delete from dwh.fact_hosts where

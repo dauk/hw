@@ -1,4 +1,4 @@
-def load_obt_hosts():
+def load_obt_hosts(spark):
     print("====STARTING LOAD OBT TABLE obt_hosts====")
     spark.sql("""
         delete from dwh.obt_hosts where

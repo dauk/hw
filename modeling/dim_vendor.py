@@ -1,4 +1,4 @@
-def load_dim_vendor():
+def load_dim_vendor(spark):
     print("====STARTING LOAD DIMENSION TABLE dim_vendor====")
     spark.sql("""
         INSERT INTO dwh.dim_vendor (vendor_name)

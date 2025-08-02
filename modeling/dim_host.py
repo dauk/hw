@@ -1,4 +1,4 @@
-def load_dim_host():
+def load_dim_host(spark):
     print("====STARTING LOAD DIMENSION TABLE dim_host====")
     spark.sql("""
         INSERT INTO dwh.dim_host (host)

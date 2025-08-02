@@ -1,4 +1,5 @@
 def load_dim_category():
+    print("====STARTING LOAD DIMENSION TABLE dim_category====")
     spark.sql("""
         INSERT INTO dwh.dim_category (category)
         SELECT DISTINCT category 
@@ -7,3 +8,5 @@ def load_dim_category():
             SELECT category FROM dwh.dim_category
         )
     """)
+    print("====FINISHED LOAD DIMENSION TABLE dim_category====")
+

@@ -1,4 +1,5 @@
 def load_fact_hosts():
+    print("====STARTING LOAD FACT TABLE fact_hosts====")
     spark.sql("""
         delete from dwh.fact_hosts where
         date in (
@@ -18,3 +19,4 @@ def load_fact_hosts():
         left join dwh.dim_vendor v
         on h.vendor = v.vendor_name
     """)
+    print("====FINISHED LOAD FACT TABLE fact_hosts====")

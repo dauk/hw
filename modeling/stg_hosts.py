@@ -20,7 +20,7 @@ spark._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "s3.amazonaws.com")
 
 
 
-# Load the DataFrames
+# Load DataFrames
 df_list = [
     spark.read.format("delta").load("s3a://hwsilver/ads_and_trackers/vendorA/").withColumn('vendor',lit('vendorA')).withColumn('category',lit('ads_and_trackers')),
     spark.read.format("delta").load("s3a://hwsilver/ads_and_trackers/vendorB/").withColumn('vendor',lit('vendorB')).withColumn('category',lit('ads_and_trackers')),
@@ -29,10 +29,6 @@ df_list = [
 ]
 
 df_all = reduce(lambda df1, df2: df1.unionByName(df2, allowMissingColumns=True), df_list)
-
-df_all.createOrReplaceTempView('tmp_hosts')
-
-spark.sql("select vendor, count(*) from tmp_hosts group by vendor").show()
 
 df_all.write.format("delta").mode("overwrite").saveAsTable("dwh.stg_hosts")
 

@@ -64,6 +64,3 @@ def ingest_data(
             log_list.append((timestamp_str,False,source_key, destination_key))
             print(f"Error copying {source_key} to {destination_key}: {e}")
     write_logs_raw(log_list)
-
-
-# TODO move copied files to processed

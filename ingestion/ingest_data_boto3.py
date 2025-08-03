@@ -12,6 +12,19 @@ SINK_ACCESS_KEY, SINK_SECRET_ACCESS_KEY, SINK_REGION = get_sink_config()
 def ingest_data(
     source_bucket_name: str, source_prefix: str, sink_bucket_name: str, sink_prefix: str
 ) -> None:
+    """
+    Copies non-empty files from a source S3 bucket/prefix to a sink S3 bucket/prefix.
+    Adds a timestamp to each filename and logs success/failure details.
+
+    Args:
+        source_bucket_name (str): The name of the source S3 bucket.
+        source_prefix (str): The prefix (folder path) in the source S3 bucket.
+        sink_bucket_name (str): The name of the destination (sink) S3 bucket.
+        sink_prefix (str): The prefix (folder path) in the sink S3 bucket where files will be copied.
+
+    Returns:
+    None
+    """
     sink_s3_resource = boto3.resource(
         "s3",
         aws_access_key_id=SINK_ACCESS_KEY,

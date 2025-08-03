@@ -1,4 +1,6 @@
-def load_fact_hosts(spark):
+from pyspark.sql import SparkSession
+
+def load_fact_hosts(spark) -> None:
     print("====STARTING LOAD FACT TABLE fact_hosts====")
     spark.sql("""
         delete from dwh.fact_hosts where
@@ -20,3 +22,11 @@ def load_fact_hosts(spark):
         on h.vendor = v.vendor_name
     """)
     print("====FINISHED LOAD FACT TABLE fact_hosts====")
+
+if __name__ == "__main__":
+    spark = SparkSession.builder \
+        .appName("load_fact_hosts") \
+        .enableHiveSupport() \
+        .getOrCreate()
+    
+    load_fact_hosts(spark)

@@ -1,4 +1,6 @@
-def load_dim_category(spark):
+from pyspark.sql import SparkSession
+
+def load_dim_category(spark) -> None:
     print("====STARTING LOAD DIMENSION TABLE dim_category====")
     spark.sql("""
         INSERT INTO dwh.dim_category (category)
@@ -10,3 +12,10 @@ def load_dim_category(spark):
     """)
     print("====FINISHED LOAD DIMENSION TABLE dim_category====")
 
+if __name__ == "__main__":
+    spark = SparkSession.builder \
+        .appName("load_dim_category") \
+        .enableHiveSupport() \
+        .getOrCreate()
+    
+    load_dim_category(spark)

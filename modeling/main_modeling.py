@@ -7,7 +7,7 @@ from obt_hosts import load_obt_hosts
 from stg_hosts import load_stg_hosts
 
 
-def load_model():
+def load_model()  -> None::
     spark = SparkSession.builder \
     .appName("prcess_model") \
     .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
@@ -17,10 +17,13 @@ def load_model():
 
 
     load_stg_hosts()#must load first
+    #dimension load
     load_dim_category(spark)
     load_dim_vendor(spark)
     load_dim_host(spark)
+    #fact load
     load_fact_hosts(spark)
+    #obt load
     load_obt_hosts(spark)
     
 

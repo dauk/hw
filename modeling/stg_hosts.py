@@ -7,7 +7,7 @@ from functools import reduce
 
 ACCESS_KEY, SECRET_KEY = get_access_secret_keys()
 
-def load_stg_hosts():
+def load_stg_hosts() -> None:
     print("====STARTING LOAD STAGING TABLE stg_hosts====")
     spark = SparkSession.builder \
         .appName("process_model") \

@@ -1,6 +1,5 @@
 import yaml
 import sys
-#sys.path.append("/Workspace/Users/dauuuk@gmail.com/hw/utility")
 
 from ingest_data_boto3 import ingest_data
 

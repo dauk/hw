@@ -30,3 +30,19 @@ CREATE OR REPLACE TABLE fact_hosts (
   category_key bigint,
   vendor_key bigint
 );
+
+CREATE OR REPLACE TABLE ops_raw_load (
+  raw_load_key BIGINT GENERATED ALWAYS AS IDENTITY,
+  ts timestamp,
+  is_success BOOLEAN,
+  file_source string,
+  file_destination string
+);
+
+CREATE OR REPLACE TABLE ops_stage_load (
+  stage_load_key BIGINT GENERATED ALWAYS AS IDENTITY,
+  ts timestamp,
+  is_success BOOLEAN,
+  param_str string,
+  error_message string
+);

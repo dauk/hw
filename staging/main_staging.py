@@ -1,11 +1,11 @@
 import yaml
 
-from process_bronze_data import process_data
+from process_stage_data import process_data
 
 with open("/Workspace/Users/dauuuk@gmail.com/hw/staging/stage_config.yaml", "r") as f:
     stage_config = yaml.safe_load(f)
 
-def run_stage_ingestion(stage_dict: dict):
+def run_stage_ingestion(stage_dict: dict) -> None:
     for category, vendors in stage_dict.items():
         for vendor, config in vendors.items():
             process_data(

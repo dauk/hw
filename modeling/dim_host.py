@@ -1,4 +1,6 @@
-def load_dim_host(spark):
+from pyspark.sql import SparkSession
+
+def load_dim_host(spark) -> None:
     print("====STARTING LOAD DIMENSION TABLE dim_host====")
     spark.sql("""
         INSERT INTO dwh.dim_host (host)
@@ -9,3 +11,11 @@ def load_dim_host(spark):
         )
     """)
     print("====FINISHED LOAD DIMENSION TABLE dim_host====")
+
+if __name__ == "__main__":
+    spark = SparkSession.builder \
+        .appName("load_dim_host") \
+        .enableHiveSupport() \
+        .getOrCreate()
+    
+    load_dim_host(spark)
